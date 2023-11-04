@@ -18,15 +18,14 @@ def testapi():
 def predict():
     if request.is_json:
         req_data = request.json
-        df = pd.DataFrame(req_data, index=[0]).reindex(columns=col_names)
-        #df = pd.read_json(json.dumps(req_data))
+        df = pd.DataFrame([req_data]).reindex(columns=col_names)
+        
+        prediction = list(model.predict(df.to_numpy()))
 
-        #data = request.get_json(force=True)
-        #prediction = model.predict([np.array(list(data.values()))])
-
-        prediction = list(model.predict(df))
+        #print(prediction)
 
         return jsonify({"prediction": str(prediction)},200)
+
     else:
         return jsonify({"error": "Content-Type is not 'application/json'"}, 400)
 
