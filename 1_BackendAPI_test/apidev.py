@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
 from flask import Flask, request, jsonify
-import json
+
 
 data_path = "./data"
 model_path = "./model"
