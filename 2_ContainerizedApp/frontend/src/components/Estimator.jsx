@@ -20,7 +20,7 @@ const Estimator = ({onEstimateValueChange,onLatitudeValueChange,onLongitudeValue
     const [msg,setMsg] = useState("")
     
     const postData = () => {
-        console.log("click estimation")
+        //console.log("click estimation")
         setMsg("")
         let data = {
             transaction_date:transactionDate

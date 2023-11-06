@@ -11,8 +11,6 @@ function App() {
   const [estimationRef,setEstimationRef] = useState(null)
   const [latRef,setLatRef] = useState(24.96334)
   const [lonRef,setLonRef] = useState(121.54767)
-  //const [latMapRef,setLatMapRef] = useState(24.96334)
-  //const [lonMapRef,setLonMapRef] = useState(121.54767)
 
   useEffect(()=>{
     setApiStatus("")
@@ -24,7 +22,6 @@ function App() {
       else {
         setApiStatus("Oups, There is an issue with the API...")
       }
-      console.log(r)
     })
     .catch((err)=>{
       console.log(err)
@@ -47,28 +44,24 @@ function App() {
     setLonRef(estimationPred)
   };
 
-  
+  const getData = (data) => {
+    console.log("APP is getting values from Map:",data.lat,data.lng)
+    setLatRef(data.lat)
+    setLonRef(data.lng)
+  }
 
-                
-/*
-  const handleMapLatitudeValue = (lat) => {
-    console.log("2/ LAT Value from MAP component:", lat);
+  /*
+  const getDataLat = (lat) => {
+    console.log("APP is getting LAT values from Map:",lat)
     setLatRef(lat)
-  };
+  }
 
-  const handleMapLongitudeValue = (lon) => {
-    console.log("2/ LON Value from MAP component:", lon);
+  const getDataLon = (lon) => {
+    console.log("APP is getting LON values from Map:",lon)
     setLonRef(lon)
   }
-  
-
-  onMapLatitudeValueChange={handleMapLatitudeValue}
-              onMapLongitudeValueChange={handleMapLongitudeValue}
-              onMapLatitudeValueChange={handleMapLatitudeValue}
-              onMapLongitudeValueChange={handleMapLongitudeValue}
-                          putLat ={latMapRef}
-            putLon ={lonMapRef}
   */
+
 
   return (
     <main>
@@ -91,8 +84,8 @@ function App() {
               lat={latRef} 
               lon={lonRef}
               estimation={estimationRef}
+              onClickMap={getData}
               
-
             />
         </article>
         

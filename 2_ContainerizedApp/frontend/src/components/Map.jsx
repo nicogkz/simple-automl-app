@@ -1,12 +1,11 @@
 
-import { useState,useRef,useEffect } from 'react'
+import { useState,useEffect } from 'react'
 import { MapContainer, TileLayer, Marker,Popup,useMapEvents } from 'react-leaflet'
 import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
 
 const Map = (props) => {
-    //,{onMapLatitudeValueChange,onMapLongitudeValueChange}
-    //const mapRef = useRef();
+
     const [mapPosition,setMapPosition] = useState({lat: props.lat, lng:props.lon})
     const [markerPosition, setMarkerPosition] = useState({lat: props.lat, lng:props.lon});
 
@@ -28,27 +27,25 @@ const Map = (props) => {
         }
       }, [markerPosition]);
     
+    //const onMapClick(lat, lng);
+
     const GetLocationFromClick = () => {
         const map = useMapEvents({
             click(e) {
                 console.log("I click on the map and get the coord: ",e.latlng);
-                setMapPosition({lat:e.latlng.lat, lng:e.latlng.lng})
-                setMarkerPosition({lat:e.latlng.lat, lng:e.latlng.lng});
+                let { lat, lng } = e.latlng;
+
+                setMapPosition({lat:lat, lng:lng})
+                setMarkerPosition({lat:lat, lng:lng});
+
+                props.onClickMap({lat: lat, lng:lng})
+                
             },
+
         });
         return null;
     };
-
-    /*
-    useEffect(()=>(
-        onMapLatitudeValueChange(markerPosition.lat)
-    ),[markerPosition])
-
-    useEffect(()=>(
-        onMapLongitudeValueChange(markerPosition.lon)
-    ),[markerPosition])
-    */
-
+    
     return (
         <div id="map">
             <p>The map shows the latitude and longitude from the form but you can also click on the map to fill the form. Enjoy :)</p>
