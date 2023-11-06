@@ -1,14 +1,18 @@
 import pickle
 import pandas as pd
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
-
+front_url = "http://127.0.0.1:5173"
 data_path = "./data"
 model_path = "./model"
 model = pickle.load(open(model_path +'/automl.pkl', 'rb'))
 col_names = pickle.load(open(model_path +'/model_columns.pkl', 'rb'))
 
 app = Flask(__name__)
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/*": {"origins": front_url}})
 
 @app.route('/',methods=['GET'])
 def testapi():

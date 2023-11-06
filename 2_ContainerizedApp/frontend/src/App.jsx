@@ -1,34 +1,109 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+
+import { useState,useEffect } from 'react'
+import Estimator from './components/Estimator'
+import Map from './components/Map'
+import { testAPI } from './apis/apis'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [apiStatus,setApiStatus] = useState("")
+  const [estimationRef,setEstimationRef] = useState(null)
+  const [latRef,setLatRef] = useState(24.96334)
+  const [lonRef,setLonRef] = useState(121.54767)
+  //const [latMapRef,setLatMapRef] = useState(24.96334)
+  //const [lonMapRef,setLonMapRef] = useState(121.54767)
+
+  useEffect(()=>{
+    setApiStatus("")
+    testAPI()
+    .then(r=>{
+      if(r.status===200){
+        setApiStatus("API is up and running!")
+      }
+      else {
+        setApiStatus("Oups, There is an issue with the API...")
+      }
+      console.log(r)
+    })
+    .catch((err)=>{
+      console.log(err)
+      setApiStatus("API is NOT live!")
+    })
+  },[])
+
+  const handleEstimationValue = (estimationPred) => {
+    console.log("Value from Estimator component:", estimationPred);
+    setEstimationRef(estimationPred)
+  };
+
+  const handleLatitudeValue = (estimationPred) => {
+    console.log("LAT Value from Estimator component:", estimationPred);
+    setLatRef(estimationPred)
+  };
+
+  const handleLongitudeValue = (estimationPred) => {
+    console.log("LON Value from Estimator component:", estimationPred);
+    setLonRef(estimationPred)
+  };
+
+  
+
+                
+/*
+  const handleMapLatitudeValue = (lat) => {
+    console.log("2/ LAT Value from MAP component:", lat);
+    setLatRef(lat)
+  };
+
+  const handleMapLongitudeValue = (lon) => {
+    console.log("2/ LON Value from MAP component:", lon);
+    setLonRef(lon)
+  }
+  
+
+  onMapLatitudeValueChange={handleMapLatitudeValue}
+              onMapLongitudeValueChange={handleMapLongitudeValue}
+              onMapLatitudeValueChange={handleMapLatitudeValue}
+              onMapLongitudeValueChange={handleMapLongitudeValue}
+                          putLat ={latMapRef}
+            putLon ={lonMapRef}
+  */
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <h1>Real Estate Price estimator</h1>
+      <section className="mechanics">
+          {<p id="api-status">{apiStatus}</p>}
+        <article className="left">
+          
+          <Estimator 
+            onEstimateValueChange={handleEstimationValue}
+            onLatitudeValueChange={handleLatitudeValue}
+            onLongitudeValueChange={handleLongitudeValue}
+
+          />
+        </article>
+
+        <article className="right">
+            <h2>Put a map on it!</h2>
+            <Map 
+              lat={latRef} 
+              lon={lonRef}
+              estimation={estimationRef}
+              
+
+            />
+        </article>
+        
+      </section>
+
+      <section className='pseudo-footer'>
+        <p>This is a demo App of course and we can go much further of course :)</p>
+        <p>A Data Science App demo by <a href="https://www.linkedin.com/in/nicolasgakrelidz/" target="_blank">Nicolas Gakrelidz</a></p>
+      </section>
+      
+    </main>
   )
 }
 

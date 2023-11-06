@@ -1,42 +1,148 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
+}
+
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: underline;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  background-color:  #48bf27;
+  border-radius: 8px;
+  border: 2px solid #48bf27;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  width:40%;
+  margin-top:10px;
+  margin-left:28%;
+}
+button:hover {
+  border-color:  #319615;
+  background-color:  #64d444;
+  color: white;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin:0;
+}
+
+.mechanics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#api-status {
+  width: 100%;
+  text-align: center;
+  color: orange;
+}
+
+.left, .right {
+  width: 49%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.left {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px dashed black;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right {
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.pseudo-footer {
+  text-align: center;
+  margin-top: 20px;
+  
 }
 
-.card {
-  padding: 2em;
+.pseudo-footer p {
+  margin: 0;
+  
 }
 
-.read-the-docs {
-  color: #888;
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: rgb(236, 233, 233);
+  padding-bottom: 5px;
+  
 }
+
+label {
+  margin:5px 0;
+  font-size: smaller;
+  font-weight: bold;
+
+}
+
+input {
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid  rgb(204, 21, 224);
+  text-align: center;
+  margin-left:40%;
+  height: 20px;
+  
+}
+
+#results {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px dashed black;
+  padding: 0 2px;
+}
+
+#results > h3{
+  margin:0;
+}
+
+#results > p{
+  margin:0;
+}
+
+#results p:nth-child(3){
+  font-size: smaller ;
+}
+
+span {
+  color: rgb(204, 21, 224);
+  font-size: larger;
+  font-weight: bold;
+}
+
+
+
+  
