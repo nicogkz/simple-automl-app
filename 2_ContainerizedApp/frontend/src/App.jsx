@@ -11,6 +11,8 @@ function App() {
   const [estimationRef,setEstimationRef] = useState(null)
   const [latRef,setLatRef] = useState(24.96334)
   const [lonRef,setLonRef] = useState(121.54767)
+  const [latRefMap,setLatRefMap] = useState(24.96334)
+  const [lonRefMap,setLonRefMap] = useState(121.54767)
 
   useEffect(()=>{
     setApiStatus("")
@@ -30,38 +32,27 @@ function App() {
   },[])
 
   const handleEstimationValue = (estimationPred) => {
-    console.log("Value from Estimator component:", estimationPred);
+    //console.log("Value from Estimator component:", estimationPred);
     setEstimationRef(estimationPred)
   };
 
-  const handleLatitudeValue = (estimationPred) => {
-    console.log("LAT Value from Estimator component:", estimationPred);
-    setLatRef(estimationPred)
-  };
-
-  const handleLongitudeValue = (estimationPred) => {
-    console.log("LON Value from Estimator component:", estimationPred);
-    setLonRef(estimationPred)
-  };
-
-  const getData = (data) => {
-    console.log("APP is getting values from Map:",data.lat,data.lng)
-    setLatRef(data.lat)
-    setLonRef(data.lng)
-  }
-
-  /*
-  const getDataLat = (lat) => {
-    console.log("APP is getting LAT values from Map:",lat)
+  const handleLatitudeValue = (lat) => {
+    //console.log("LAT Value from Estimator component:", lat);
     setLatRef(lat)
-  }
+  };
 
-  const getDataLon = (lon) => {
-    console.log("APP is getting LON values from Map:",lon)
+  const handleLongitudeValue = (lon) => {
+    //console.log("LON Value from Estimator component:", lon);
     setLonRef(lon)
-  }
-  */
+  };
 
+  
+  const getData = (data) => {
+    //console.log("APP is getting values from Map:",data.lat,data.lng)
+    setLatRefMap(data.lat)
+    setLonRefMap(data.lng)
+  }
+  
 
   return (
     <main>
@@ -74,6 +65,10 @@ function App() {
             onEstimateValueChange={handleEstimationValue}
             onLatitudeValueChange={handleLatitudeValue}
             onLongitudeValueChange={handleLongitudeValue}
+
+            onCoordsValueChangeMapLat={latRefMap}
+            onCoordsValueChangeMapLon={lonRefMap}
+            
 
           />
         </article>
@@ -92,8 +87,8 @@ function App() {
       </section>
 
       <section className='pseudo-footer'>
-        <p>This is a demo App of course and we can go much further of course :)</p>
-        <p>A Data Science App demo by <a href="https://www.linkedin.com/in/nicolasgakrelidz/" target="_blank">Nicolas Gakrelidz</a></p>
+        <p>This is a Data Science demo App and we can go much further of course :)</p>
+        <p>by <a href="https://www.linkedin.com/in/nicolasgakrelidz/" target="_blank">Nicolas Gakrelidz</a></p>
       </section>
       
     </main>

@@ -2,11 +2,11 @@
 import {useState,useRef, useEffect} from 'react'
 import {postEstimation} from '../apis/apis'
 
-//transaction_date":"2013.9123","house_age":"17","dist_to_nearest_mrt_station":"837.7233","number_of_convenience_stores":"10","latitude":"24.96334","longitude":"121.54767"}
+//Params Example: transaction_date":"2013.9123","house_age":"17","dist_to_nearest_mrt_station":"837.7233","number_of_convenience_stores":"10","latitude":"24.96334","longitude":"121.54767"}
 
 
 
-const Estimator = ({onEstimateValueChange,onLatitudeValueChange,onLongitudeValueChange}) => {
+const Estimator = ({onEstimateValueChange,onLatitudeValueChange,onLongitudeValueChange,onCoordsValueChangeMapLat,onCoordsValueChangeMapLon}) => {
 
 
     const [transactionDate,setTransactionDate] = useState(2013.9123)
@@ -16,11 +16,9 @@ const Estimator = ({onEstimateValueChange,onLatitudeValueChange,onLongitudeValue
     const [lat,setLat] = useState(24.96334)
     const [lon,setLon] = useState(121.54767)
     const [estimationPred,setEstimationPred] = useState(null)
-    //const estimationPredRef = useRef(null);
     const [msg,setMsg] = useState("")
     
     const postData = () => {
-        //console.log("click estimation")
         setMsg("")
         let data = {
             transaction_date:transactionDate
@@ -58,6 +56,12 @@ const Estimator = ({onEstimateValueChange,onLatitudeValueChange,onLongitudeValue
         onLongitudeValueChange(lon)
     ),[lon])
 
+    useEffect(()=>(
+        setLat(onCoordsValueChangeMapLat),
+        setLon(onCoordsValueChangeMapLon)
+    ),[onCoordsValueChangeMapLat,onCoordsValueChangeMapLon])
+
+    
     return (
         <div>
             <h2>Enter your parameters and get an estimation:</h2>
@@ -126,7 +130,7 @@ const Estimator = ({onEstimateValueChange,onLatitudeValueChange,onLongitudeValue
                         (
                             <div id="results">
                                 <h3>Result:</h3>
-                                <p><span>{estimationPred.toFixed(2)} </span><em>(*)</em></p>
+                                <p title={`Results according to params`}><span>{estimationPred.toFixed(2)} </span><em>(*)</em></p>
                                 <p><em>(*) 10000 New Taiwan Dollar/Ping, where Ping is a local unit, 1 Ping = 3.3 meter squared. Data from <a href="https://archive.ics.uci.edu/dataset/477/real+estate+valuation+data+set" target="_blank">UCI</a></em></p>
                             </div>
                         )

@@ -21,13 +21,11 @@ const Map = (props) => {
       });
 
     useEffect(() => {
-        //console.log(props.lat,props.lon)
         if (markerPosition) {
             setMapPosition(markerPosition);
         }
       }, [markerPosition]);
     
-    //const onMapClick(lat, lng);
 
     const GetLocationFromClick = () => {
         const map = useMapEvents({
@@ -62,6 +60,7 @@ const Map = (props) => {
                     
                 )}
             </MapContainer>
+            <p><em>Coordinates {`=>`} Lat: {markerPosition.lat}, Lon:{markerPosition.lng}</em></p>
         </div>
     )
 }
