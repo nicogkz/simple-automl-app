@@ -5,6 +5,9 @@ Bonus: the user can see the latitude longitude of the house on a map and can get
 
 Status: WIP.
 
+> APP UI: 
+<img src="./Real Estate Pricing Estimator App Screenshot.png" />
+
 <h2>Here is what you will have in it:</h2>
 0/ 0_Investigation
 > Data exploration (in the work folder), data prep and AutoML Model using FLAML. Some insights and viz are describing the data we have.
@@ -17,9 +20,13 @@ Status: WIP.
 2/ 2_ContainerizedAPP
 > Let's add a basic React front end (Runs on: http://127.0.0.1:5173) to get estimations and containerized the whole app.
 > Status: WIP.
-> TO DO: 1/ Bring the new coords from Map to the Estimator Component. 2/ Docker Container
+> TO DO: Docker Container
 
-<h2>Not tech for tech but let's explain what is supporting our app</h2>
+<h2>Stack: Not tech for tech but let's explain what is supporting our app</h2>
+* DS Packages: FLAML AutoML + the usual suspects Pandas, Scikit Learn, Seaborn, Leaflet, MatplotLib...
+* Flask Backend
+* React Frontend (using leaflet)
+* Docker
 
 <h2>Useful Resources </h2>
 ## Data:
