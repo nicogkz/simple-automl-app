@@ -21,8 +21,7 @@ Status: WIP.
 
 2/ 2_ContainerizedAPP
 > Let's add a basic React front end (Runs on: http://127.0.0.1:5173) to get estimations and containerized the whole app.
-> Status: WIP.
-> TO DO: Docker Container
+> NB : Docker not tested yet!
 
 <h2>Stack: Not tech for tech but let's explain what is supporting our app</h2>
 * DS Packages: FLAML AutoML + the usual suspects Pandas, Scikit Learn, Seaborn, Leaflet, MatplotLib...
