@@ -1,5 +1,5 @@
 
-
+// Author: Nicolas Gakrelidz
 import { useState,useEffect } from 'react'
 import Estimator from './components/Estimator'
 import Map from './components/Map'
@@ -56,7 +56,7 @@ function App() {
 
   return (
     <main>
-      <h1>Real Estate Price estimator</h1>
+      <h1>Real Estate Pricing estimator</h1>
       <section className="mechanics">
           {<p id="api-status">{apiStatus}</p>}
         <article className="left">
