@@ -1,7 +1,9 @@
 ### A Very simple App to predict using Machine Learning a Real Estate value.
 
-The use case is super simple: a real estate company wants to build a estimator of the price per squared-meters for houses in a specific area. The user fills some parameters and get an estimation.
-Bonus: the user can see the latitude longitude of the house on a map and can get the lat lon filled from the map.
+The use case is super simple: a real estate company wants to build a price per squared-meters estimator for houses in a specific area - Per the data available this relates to houses in Taiwan. The user fills some parameters and get an estimation.
+Bonus: the user can see the house latitude longitude coordinates on a map and can also click the map to get the coordinates put in the estimator.
+
+And of course we can do much more...
 
 Status: WIP.
 
@@ -25,7 +27,7 @@ Status: WIP.
 <h2>Stack: Not tech for tech but let's explain what is supporting our app</h2>
 * DS Packages: FLAML AutoML + the usual suspects Pandas, Scikit Learn, Seaborn, Leaflet, MatplotLib...
 * Flask Backend
-* React Frontend (using leaflet)
+* React Frontend (using leaflet): Point of Interest here => use of props to send and get data from Child and Parent components.
 * Docker
 
 <h2>Useful Resources </h2>
